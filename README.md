@@ -8,6 +8,7 @@ This project develops a machine learning framework to estimate brain iron levels
 Brain iron plays a critical role in several neurological conditions, where abnormal accumulation is linked to disease progression. Traditional measurement methods are invasive or limited in accessibility. MRI, particularly T2*-weighted imaging, provides a non-invasive approach to assess iron-sensitive contrast. This project investigates how machine learning can enhance the extraction and interpretation of such biomarkers for potential clinical use.
 
 ⚙️ Methodology
+
 Data Processing
 MRI data loading using NiBabel
 Intensity normalisation
@@ -24,32 +25,38 @@ Model evaluation using standard performance metrics
 Uncertainty Estimation
 Analysis of prediction confidence
 Exploration of model reliability in a clinical context
+
 🔄 Pipeline
 
 MRI Data → Preprocessing → ROI Extraction → Feature Engineering → Machine Learning Model → Prediction + Uncertainty Analysis
 
 📊 Results
+
 Demonstrated feasibility of predicting iron-sensitive MRI features using machine learning
 Observed meaningful variation across different brain regions
 Model performance evaluated using quantitative metrics
 
 ⚠️ Limitations
+
 Limited dataset size
 Use of proxy labels rather than direct biochemical measurements
 Lack of external validation on independent datasets
 
 🔐 Ethical and Clinical Considerations
+
 Ensuring patient data privacy and anonymisation
 Awareness of bias in training datasets
 This model is for research purposes only and not intended for direct clinical decision-making without validation
 
 🔮 Future Work
+
 Integration with Quantitative Susceptibility Mapping (QSM)
 Expansion to larger, multi-centre datasets
 Development of deep learning models for voxel-wise prediction
 Clinical validation in neurodegenerative disease cohorts
 
 🧾 Technical Stack
+
 Python
 NumPy, Pandas
 NiBabel, SimpleITK
