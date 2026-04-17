@@ -1,127 +1,53 @@
-AI-Assisted Identification of Brain Iron-Rich Regions from MRI
-Overview
+🧠 AI-Based Brain Iron Estimation from MRI
+🔍 Overview
 
-This project explores the use of machine learning to identify iron-rich regions in the human brain from magnetic resonance imaging (MRI), with a focus on transparency, uncertainty, and clinical relevance. Brain iron accumulation is strongly associated with normal ageing and neurodegenerative conditions, yet direct measurement of iron concentration in vivo remains challenging. MRI-based proxies, particularly using T2* or multi-echo GRE sequences, provide an opportunity to investigate spatial patterns of iron deposition in a non-invasive manner.
+This project develops a machine learning framework to estimate brain iron levels from T2*-weighted MRI data. Iron accumulation in the brain is associated with neurodegenerative disorders such as Alzheimer’s disease and Parkinson’s disease. The aim of this work is to explore non-invasive, imaging-based biomarkers using quantitative MRI and artificial intelligence.
 
-The aim of this project is not to produce a clinically deployable tool, but to develop and demonstrate a reproducible, interpretable AI pipeline for exploratory research into iron-related MRI biomarkers.
+🏥 Clinical Motivation
 
-Data
+Brain iron plays a critical role in several neurological conditions, where abnormal accumulation is linked to disease progression. Traditional measurement methods are invasive or limited in accessibility. MRI, particularly T2*-weighted imaging, provides a non-invasive approach to assess iron-sensitive contrast. This project investigates how machine learning can enhance the extraction and interpretation of such biomarkers for potential clinical use.
 
-The project uses publicly available, consented neuroimaging data from OpenNeuro, specifically multi-echo GRE magnitude images suitable for iron-sensitive analysis. Only a small subset of data is used for methodological development.
+⚙️ Methodology
+Data Processing
+MRI data loading using NiBabel
+Intensity normalisation
+Brain masking and preprocessing
+Region of Interest (ROI) Analysis
+Extraction of iron-rich regions (e.g. hippocampus, thalamus)
+ROI-based signal quantification
+Feature Extraction
+Statistical features derived from T2* signal intensities
+ROI-level and voxel-level representations
+Machine Learning
+Supervised learning models for prediction
+Model evaluation using standard performance metrics
+Uncertainty Estimation
+Analysis of prediction confidence
+Exploration of model reliability in a clinical context
+🔄 Pipeline
 
-Data characteristics:
+MRI Data → Preprocessing → ROI Extraction → Feature Engineering → Machine Learning Model → Prediction + Uncertainty Analysis
 
-3D brain MRI (GRE / T2*-weighted)
-
-Single-subject demonstration pipeline
-
-NIfTI format (.nii.gz)
-
-No patient-identifiable information is used.
-
-Methods and Pipeline
-
-The workflow follows a standard, research-grade MRI–AI pipeline:
-
-1. MRI Loading and Visualisation
-
-Loading of NIfTI MRI volumes
-
-Inspection of image dimensions, voxel size, and intensity distribution
-
-Visualisation of representative brain slices
-
-2. Brain Masking and Intensity Normalisation
-
-Removal of background and non-brain voxels using simple intensity-based masking
-
-Z-score normalisation of brain intensities to reduce scanner-dependent effects
-
-Preparation of data suitable for machine learning
-
-3. AI-Ready Slice Generation
-
-Selection of axial slices containing sufficient brain tissue
-
-Conversion of 3D MRI volumes into 2D slices
-
-Rescaling to 8-bit format for compatibility with standard ML frameworks
-
-4. Proxy Labelling of Iron-Rich Regions
-
-Creation of pseudo-labels based on low-signal intensity in deep brain regions
-
-Anatomically motivated focus on central axial slices containing basal ganglia
-
-Explicit acknowledgement that labels are approximate and not ground truth
-
-5. Supervised Machine Learning Baseline
-
-Training of an interpretable logistic regression model
-
-Single-feature input (normalised MRI intensity)
-
-Class-imbalance handling using balanced class weights
-
-Generation of voxel-wise iron probability maps
-
-6. Uncertainty Analysis
-
-Estimation of prediction uncertainty from model probabilities
-
-Identification of regions where predictions are less reliable
-
-Emphasis on uncertainty as a requirement for safe clinical translation
-
-Ethical Considerations and Limitations
-
-This work uses proxy labels derived from MRI signal characteristics and anatomical assumptions, not histological ground truth. As such, predicted iron-rich regions should be interpreted as approximate indicators rather than definitive measures of iron concentration.
-
-A central ethical consideration is avoiding overconfidence in automated outputs. To address this, uncertainty maps are generated alongside predictions, highlighting areas where model outputs should be interpreted cautiously. This aligns with responsible AI principles, where models are intended to support — not replace — expert judgement.
-
-Potential biases include scanner-specific intensity differences, limited subject diversity, and the use of a small dataset for methodological demonstration. Any future extension of this work would require multi-site data, harmonisation strategies, and validation against clinical outcomes or biological reference standards.
-
-This project is intended strictly for research and educational purposes.
-
-Tools and Libraries
-
+📊 Results
+Demonstrated feasibility of predicting iron-sensitive MRI features using machine learning
+Observed meaningful variation across different brain regions
+Model performance evaluated using quantitative metrics
+⚠️ Limitations
+Limited dataset size
+Use of proxy labels rather than direct biochemical measurements
+Lack of external validation on independent datasets
+🔐 Ethical and Clinical Considerations
+Ensuring patient data privacy and anonymisation
+Awareness of bias in training datasets
+This model is for research purposes only and not intended for direct clinical decision-making without validation
+🔮 Future Work
+Integration with Quantitative Susceptibility Mapping (QSM)
+Expansion to larger, multi-centre datasets
+Development of deep learning models for voxel-wise prediction
+Clinical validation in neurodegenerative disease cohorts
+🧾 Technical Stack
 Python
-
-NumPy, SciPy
-
-NiBabel
-
+NumPy, Pandas
+NiBabel, SimpleITK
+Scikit-learn
 Matplotlib
-
-scikit-learn
-
-All tools used are open-source.
-
-Project Structure
-AI_Brain_Iron_MRI/
-├── data/
-│   ├── raw/              # Original MRI files
-│   └── processed/        # Derived slices and label maps
-├── notebooks/
-│   └── 01_load_and_visualise_MRI.ipynb
-├── figures/              # Visual outputs
-├── environment.yml
-└── README.md
-
-Motivation and Future Work
-
-This project was developed to build practical, PhD-relevant experience at the intersection of MRI physics, medical image analysis, and responsible AI. Future extensions could include:
-
-Multi-subject and multi-site analysis
-
-Atlas-based anatomical labelling
-
-CNN-based segmentation with uncertainty modelling
-
-Validation against cognitive, clinical, or histological measures
-
-Author
-
-Rajeev
-Background: Physics & Medical Physics
-Interests: MRI, quantitative imaging, AI for brain health, precision medicine
