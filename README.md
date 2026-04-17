@@ -32,19 +32,23 @@ MRI Data → Preprocessing → ROI Extraction → Feature Engineering → Machin
 Demonstrated feasibility of predicting iron-sensitive MRI features using machine learning
 Observed meaningful variation across different brain regions
 Model performance evaluated using quantitative metrics
+
 ⚠️ Limitations
 Limited dataset size
 Use of proxy labels rather than direct biochemical measurements
 Lack of external validation on independent datasets
+
 🔐 Ethical and Clinical Considerations
 Ensuring patient data privacy and anonymisation
 Awareness of bias in training datasets
 This model is for research purposes only and not intended for direct clinical decision-making without validation
+
 🔮 Future Work
 Integration with Quantitative Susceptibility Mapping (QSM)
 Expansion to larger, multi-centre datasets
 Development of deep learning models for voxel-wise prediction
 Clinical validation in neurodegenerative disease cohorts
+
 🧾 Technical Stack
 Python
 NumPy, Pandas
