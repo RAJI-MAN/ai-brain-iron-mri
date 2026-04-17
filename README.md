@@ -1,4 +1,5 @@
 🧠 AI-Based Brain Iron Estimation from MRI
+
 🔍 Overview
 
 This project develops a machine learning framework to estimate brain iron levels from T2*-weighted MRI data. Iron accumulation in the brain is associated with neurodegenerative disorders such as Alzheimer’s disease and Parkinson’s disease. The aim of this work is to explore non-invasive, imaging-based biomarkers using quantitative MRI and artificial intelligence.
